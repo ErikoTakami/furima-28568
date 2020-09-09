@@ -42,7 +42,6 @@
 | item     | references | null: false, foreign_key: true |
 
 ### Association
-- has_one :order
 - has_one :shipping_address
 - belongs_to :user
 - belongs_to :item
@@ -58,16 +57,6 @@
 | building      | string     |                                |
 | phone_number  | string     | null: false                    |
 | purchase      | references | null: false, foreign_key: true |
-
-### Association
-- belongs_to :purchase
-
-## ordersテーブル
-
-| Column   | Type       | Options                        |
-| -------- | ---------- | ------------------------------ |
-| price    | integer    | null: false                    |
-| purchase | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :purchase
