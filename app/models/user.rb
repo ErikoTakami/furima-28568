@@ -3,12 +3,19 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates :nickname, :email, :encrypted_password, :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday, presence: true
-  validates :email, uniqueness: true
-  validates :email, format: { with: /\A\S+@\S+\.\S+\z/ }
-  validates :encrypted_password, length: { minimum: 6 }
-  validates :encrypted_password, format: { with: /\A[a-zA-Z0-9]+\z/ }
-  # validates :
-  validates :last_name, :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
-  validates :last_name_kana, :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
+
+  validates :nickname, :birthday, presence: true
+
+  validates :email, presence: true, uniqueness: true,
+             format: { with: /\A\S+@\S+\.\S+\z/ , message: 'には@が必要です' }
+
+  PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,}\z/
+  validates :password, presence: true,
+             format: { with: PASSWORD_REGEX , message: 'には英字と数字の両方を含めて設定してください' }
+
+  validates :last_name, :first_name, presence: true, 
+             format: { with: /\A[ぁ-んァ-ン一-龥]/ , message: 'は全角で入力してください' }
+
+  validates :last_name_kana, :first_name_kana, presence: true,
+             format: { with: /\A[ァ-ヶー－]+\z/ , message: 'は全角カタカナで入力してください' }
 end
