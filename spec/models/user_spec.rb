@@ -19,7 +19,6 @@ RSpec.describe User, type: :model do
         @user.password_confirmation = "abcde0"
         expect(@user).to be_valid
       end
-
     end
 
     context '新規登録がうまくいかないとき' do
