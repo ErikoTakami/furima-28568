@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates :email, presence: true, uniqueness: true,
-             format: { with: /\A\S+@\S+\.\S+\z/ , message: 'には@が必要です' }
-  PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,}\z/
+             format: { with: /\A\S+@\S+\.\S+\z/ , message: 'は@を含む必要があります' }
+  PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[\d])\w{6,}\z/
   validates :password, presence: true,
              format: { with: PASSWORD_REGEX , message: 'には英字と数字の両方を含めて設定してください' }
   validates :last_name, :first_name, presence: true, 
