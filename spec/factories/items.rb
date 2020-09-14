@@ -8,10 +8,10 @@ FactoryBot.define do
     shipping_charges     { Faker::Number.between(from: 1, to: 2) }
     shipping_origin      { Faker::Number.between(from: 1, to: 47) }
     days_until_shipping  { Faker::Number.between(from: 1, to: 3) }
-    price                { Faker::Number.between(from: 300, to: 9999999) }
-  
+    price                { Faker::Number.between(from: 300, to: 9_999_999) }
+
     after(:build) do |item|
-      item.image.attach(io: File.open('public/images/item-sample.png'), filename: 'item-sample.png' )
+      item.image.attach(io: File.open('public/images/item-sample.png'), filename: 'item-sample.png')
     end
   end
 end
