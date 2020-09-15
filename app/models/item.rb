@@ -8,8 +8,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :days_until_shipping
   has_one_attached :image
 
-  validates :name, :text, :category, :status, :shipping_charges, 
-            :shipping_origin, :days_until_shipping, :price, :image, presence: true 
+  validates :name, :text, :category, :status, :shipping_charges,
+            :shipping_origin, :days_until_shipping, :price, :image, presence: true
 
   validates :category_id,            numericality: { other_than: 0 }
   validates :status_id,              numericality: { other_than: 0 }
