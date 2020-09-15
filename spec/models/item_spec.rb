@@ -25,27 +25,27 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Text can't be blank")
     end
     it 'カテゴリーの情報が選択されていないと出品できない' do
-      @item.category = ''
+      @item.category_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Category can't be blank")
     end
     it '商品の状態の情報が選択されていないと出品できない' do
-      @item.status = ''
+      @item.status_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Status can't be blank")
     end
     it '配送料の負担の情報が選択されていないと出品できない' do
-      @item.shipping_charges = ''
+      @item.shipping_charges_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Shipping charges can't be blank")
     end
     it '発送元の地域の情報が選択されていないと出品できない' do
-      @item.shipping_origin = ''
+      @item.shipping_origin_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Shipping origin can't be blank")
     end
     it '発送までの日数の情報が選択されていないと出品できない' do
-      @item.days_until_shipping = ''
+      @item.days_until_shipping_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Days until shipping can't be blank")
     end
