@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   end
 
   def new
+
     @item = Item.new
   end
 
@@ -25,6 +26,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :text, :category, :status, :shipping_charges, :shipping_origin, :days_until_shipping, :price, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :text, :category_id, :status_id, :shipping_charges_id, :shipping_origin_id, :days_until_shipping_id, :price, :image).merge(user_id: current_user.id)
   end
 end
