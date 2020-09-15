@@ -1,6 +1,7 @@
 window.addEventListener('load', function(){
   const priceInput = document.getElementById("item-price")
-    
+  
+
   priceInput.addEventListener('input', function(){
     const priceTax = document.getElementById("add-tax-price")
     const priceProfit = document.getElementById("profit")
@@ -10,5 +11,5 @@ window.addEventListener('load', function(){
     priceTax.innerHTML = tax
     let profit = price - tax
     priceProfit.innerHTML = profit
-  })
+  });
 })
