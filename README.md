@@ -18,17 +18,17 @@
 
 ## itemsテーブル
 
-| Column               | Type       | Options                        |
-| -------------------- | ---------- | ------------------------------ |
-| name                 | string     | null: false                    |
-| text                 | text       | null: false                    |
-| category             | integer    | null: false                    |
-| status               | integer    | null: false                    |
-| shipping_charges     | integer    | null: false                    |
-| shipping_origin      | integer    | null: false                    |
-| days_until_shipping  | integer    | null: false                    |
-| price                | integer    | null: false                    |
-| user                 | references | null: false, foreign_key: true |
+| Column                 | Type       | Options                        |
+| ---------------------- | ---------- | ------------------------------ |
+| name                   | string     | null: false                    |
+| text                   | text       | null: false                    |
+| category_id            | integer    | null: false                    |
+| status_id              | integer    | null: false                    |
+| shipping_charges_id    | integer    | null: false                    |
+| shipping_origin_id     | integer    | null: false                    |
+| days_until_shipping_id | integer    | null: false                    |
+| price                  | integer    | null: false                    |
+| user                   | references | null: false, foreign_key: true |
 
 ### Association
 - has_one :purchase
@@ -52,7 +52,7 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | post_code     | string     | null: false                    |
-| prefecture    | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | block         | string     | null: false                    |
 | building      | string     |                                |
