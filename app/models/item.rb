@@ -1,12 +1,13 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
+  has_one :purchase
+  has_one_attached :image
   belongs_to_active_hash :category
   belongs_to_active_hash :status
   belongs_to_active_hash :shipping_charges
   belongs_to_active_hash :shipping_origin
   belongs_to_active_hash :days_until_shipping
-  has_one_attached :image
 
   validates :name, :text, :category, :status, :shipping_charges,
             :shipping_origin, :days_until_shipping, :price, :image, presence: true
