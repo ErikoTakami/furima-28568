@@ -7,7 +7,7 @@ class ItemPurchase
     validates :prefecture_id, numericality: { other_than: 0 }
     validates :city
     validates :block
-    validates :phone_number, format: { with: /\A\d{10,11}\z/ , message: 'is invalid'}
+    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'is invalid' }
     validates :token
   end
 

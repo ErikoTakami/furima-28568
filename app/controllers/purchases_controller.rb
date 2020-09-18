@@ -1,10 +1,10 @@
 class PurchasesController < ApplicationController
-  before_action :authenticate_user! 
-  before_action :item_find, only:[:index, :create, :pay_item, :user_check, :sold_check]
+  before_action :authenticate_user!
+  before_action :item_find, only: [:index, :create, :pay_item, :user_check, :sold_check]
   before_action :user_check
   before_action :sold_check
 
-  def index 
+  def index
     @purchase = ItemPurchase.new
   end
 
@@ -39,15 +39,10 @@ class PurchasesController < ApplicationController
   end
 
   def user_check
-      if user_signed_in? && current_user.id == @item.user_id
-        redirect_to root_path
-      end
+    redirect_to root_path if user_signed_in? && current_user.id == @item.user_id
   end
 
   def sold_check
-    if Purchase.exists?(item_id: @item.id)
-      redirect_to root_path
-    end
+    redirect_to root_path if Purchase.exists?(item_id: @item.id)
   end
-
 end

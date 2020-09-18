@@ -12,22 +12,22 @@ RSpec.describe ItemPurchase, type: :model do
     it 'numberが空だと購入できないこと' do
       @purchase.number = ''
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include()
+      expect(@purchase.errors.full_messages).to include
     end
     it 'cvcが空だと購入できないこと' do
       @purchase.cvc = ''
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include()
+      expect(@purchase.errors.full_messages).to include
     end
     it 'exp_monthが空だと購入できないこと' do
       @purchase.exp_month = ''
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include()
+      expect(@purchase.errors.full_messages).to include
     end
     it 'exp_yearが空だと購入できないこと' do
       @purchase.exp_year = ''
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include()
+      expect(@purchase.errors.full_messages).to include
     end
     it 'post_codeが空だと購入できないこと' do
       @purchase.post_code = ''
@@ -66,17 +66,17 @@ RSpec.describe ItemPurchase, type: :model do
     it 'phone_numberはハイフンが不要であること' do
       @purchase.phone_number = '090-1234-12'
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include("Phone number is invalid")
+      expect(@purchase.errors.full_messages).to include('Phone number is invalid')
     end
     it 'phone_numberは11桁以上では購入できないこと' do
       @purchase.phone_number = '090123412345'
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include("Phone number is invalid")
+      expect(@purchase.errors.full_messages).to include('Phone number is invalid')
     end
     it 'phone_numberは10桁未満では購入できないこと' do
       @purchase.phone_number = '09012341'
       @purchase.valid?
-      expect(@purchase.errors.full_messages).to include("Phone number is invalid")
+      expect(@purchase.errors.full_messages).to include('Phone number is invalid')
     end
     it 'tokenが存在しない場合は購入できないこと' do
       @purchase.token = ''
