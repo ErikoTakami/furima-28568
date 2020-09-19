@@ -1,9 +1,5 @@
 FactoryBot.define do
   factory :item_purchase do
-    number         { '4242424242424242' }
-    cvc            { '123' }
-    exp_month      { '1' }
-    exp_year       { '30' }
     post_code      { '123-4567' }
     prefecture_id  { Faker::Number.between(from: 1, to: 47) }
     city           { '島根県出雲市' }
