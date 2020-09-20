@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one :purchase
   has_one_attached :image
+  has_many :comments
   belongs_to_active_hash :category
   belongs_to_active_hash :status
   belongs_to_active_hash :shipping_charges
