@@ -10,6 +10,11 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
+  def show
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user).order('created_at DESC')
+  end
+
   def create
     @item = Item.new(item_params)
     if @item.save
