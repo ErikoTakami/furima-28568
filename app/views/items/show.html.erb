@@ -78,19 +78,52 @@
   <%# /商品の概要 %>
 
   <div class="comment-box">
-    <form>
-      <textarea class="comment-text"></textarea>
-      <p class="comment-warn">
-        相手のことを考え丁寧なコメントを心がけましょう。
-        <br>
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      </p>
-      <button type="submit" class="comment-btn">
-        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <span>コメントする<span>
-      </button>
-    </form>
+    <% if user_signed_in? %>
+      <%= form_with model: [@item, @comment], local: true do |f| %>
+        <% unless Purchase.exists?(item_id: @item.id) %>
+          <%= f.text_area :comment, class:"comment-text" %>
+        <% else %>
+          <input type="text" class="comment-text" style="background-color: #EEEEEE;" disabled>
+        <% end %>
+
+        <p class="comment-warn">
+          相手のことを考え丁寧なコメントを心がけましょう。
+          <br>
+          不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        </p>
+        
+        <% unless Purchase.exists?(item_id: @item.id) %>
+          <button type="submit" class="comment-btn">
+            <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+            <span>コメントする<span>
+          </button>
+        <% else %>
+          <div class="comment-btn-sold">
+            <span>売り切れのためコメントできません</span>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
+
+  <div class="comments">
+    <div class="comment">
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <% if @item.user_id == comment.user_id %> 
+            <div class="comment-nickname-host"><%= comment.user.nickname %>（出品者）</div>
+          <% else %>
+            <div class="comment-nickname"><%= comment.user.nickname %></div>
+          <% end %>
+            <div class="comment-area">
+              <%= comment.comment %>
+              <div class="comment-date"><%= l comment.created_at %></div>
+            </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
   <div class="links">
     <a href="#" class="change-item-btn">
       ＜ 前の商品
