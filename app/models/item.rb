@@ -19,5 +19,5 @@ class Item < ApplicationRecord
   validates :shipping_origin_id,     numericality: { other_than: 0 }
   validates :days_until_shipping_id, numericality: { other_than: 0 }
   validates :price,                  numericality: { only_integer: true, message: 'は半角数字で入力してください' }
-  validates :price,                  numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
+  validates :price,                  numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'は¥300〜9,999,999の間で設定してください' }
 end
