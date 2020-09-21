@@ -3,6 +3,7 @@ ja:
     attributes:
       user:
         nickname: ニックネーム
+    attributes: 
       item:
         text: 商品の説明
         image: 画像
@@ -13,6 +14,16 @@ ja:
         shipping_charges_id: 配送料の負担
         shipping_origin_id: 発送元の地域
         days_until_shipping_id: 発送までの日数
+    attributes: 
+      item_purchase:
+        post_code: 郵便番号
+        prefecture_id: 都道府県
+        city: 市町村
+        block: 番地
+        building: 建物名
+        phone_number: 電話番号
+        token: クレジットカード情報
+    attributes: 
       comment:
         comment: コメント
     errors:
