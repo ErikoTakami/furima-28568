@@ -3,11 +3,11 @@ class ItemPurchase
   attr_accessor :post_code, :prefecture_id, :city, :block, :building, :phone_number, :token, :user_id, :item_id
 
   with_options presence: true do
-    validates :post_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'is invalid. Include hyphen(-)' }
+    validates :post_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'にはハイフンが必要です' }
     validates :prefecture_id, numericality: { other_than: 0 }
     validates :city
     validates :block
-    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'is invalid' }
+    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'が正しくありません' }
     validates :token
   end
 
